@@ -17,9 +17,7 @@ app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 app.get('/qa/', db.getUsers);
 
 // Get one QA
-app.get('/qa/:id', function(req, res) {
-  res.json({ num: req.params.id })
-});
+app.get('/qa/:id', db.getUser);
 
 // app.post('/qa/:id', function(req, res) {
 //   res.send('POST req to root')
