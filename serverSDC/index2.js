@@ -13,23 +13,25 @@ app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
 // Future Update: Move routes to their own file, e.g. routes.js
 
-app.get('/', function(req, res) {
-  res.json({ info: 'Node.js, Express, and Postgres API'})
-})
+// Get all QAs
+app.get('/qa/', db.getUsers);
 
-app.get('/users', db.getUsers);
+// Get one QA
+app.get('/qa/:id', function(req, res) {
+  res.json({ num: req.params.id })
+});
 
-app.post('/', function(req, res) {
-  res.send('POST req to root')
-})
+// app.post('/qa/:id', function(req, res) {
+//   res.send('POST req to root')
+// })
 
-app.put('/', function(req, res) {
-  res.send('PUT req to root')
-})
+// app.put('/qa/:id', function(req, res) {
+//   res.send('PUT req to root')
+// })
 
-app.delete('/', function(req, res) {
-  res.send('DELETE req to root')
-})
+// app.delete('/qa/:id', function(req, res) {
+//   res.send('DELETE req to root')
+// })
 
 // Shape of Data:
 /*
