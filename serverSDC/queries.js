@@ -5,7 +5,7 @@ const pool = new Pool({
   database: 'productqas',
   password: '',
   port: 5432,
-})
+});
 
 const getUsers = (req, res) => {
   pool.query('SELECT * FROM products ORDER BY id ASC', (error, results) => {
@@ -13,18 +13,17 @@ const getUsers = (req, res) => {
       throw error;
     }
     res.status(200).json(results.rows)
-  })
-}
+  });
+};
 
 const getUser = (req, res) => {
-  pool.query(`SELECT * FROM products WHERE id = ${req.params.id}`, (error, results) => {
+  pool.query(`SELECT * FROM products WHERE product_id = ${req.params.product_id}`, (error, results) => {
     if (error) {
       throw error;
     }
-    res.status(200).json(results.rows)
-  })
-}
-
+    res.status(200).json(results.rows);
+  });
+};
 
 module.exports = {
   getUsers,

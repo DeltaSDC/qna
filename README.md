@@ -8,13 +8,13 @@ localhost:3003/qa/
 
 #### GET one product Q&A:
 
-localhost:3003/qa/:id
+localhost:3003/qa/:product_id
 
 #### POST one product Q&A:
 
-localhost:3003/qa/:id
+localhost:3003/qa/:product_id
 
 #### DELETE one product Q&A:
 
-localhost:3003/qa/:id
+localhost:3003/qa/:product_id
 
