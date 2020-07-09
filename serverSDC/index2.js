@@ -14,20 +14,20 @@ app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 // Future Update: Move routes to their own file, e.g. routes.js
 
 // Get all QAs
-app.get('/qa/', db.getUsers);
+app.get('/qa/', db.getProducts);
 
 // Get one QA
-app.get('/qa/:id', db.getUser);
+app.get('/qa/:product_id', db.getProduct);
 
-// app.post('/qa/:id', function(req, res) {
+// app.post('/qa/:product_id', function(req, res) {
 //   res.send('POST req to root')
 // })
 
-// app.put('/qa/:id', function(req, res) {
+// app.put('/qa/:product_id', function(req, res) {
 //   res.send('PUT req to root')
 // })
 
-// app.delete('/qa/:id', function(req, res) {
+// app.delete('/qa/:product_id', function(req, res) {
 //   res.send('DELETE req to root')
 // })
 
