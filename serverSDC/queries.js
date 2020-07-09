@@ -33,47 +33,8 @@ const createProduct = (req, res => {
   pool.query(`INSERT INTO questions
   (question_id, question_body, question_date, question_helpfulness, reported, asker_name, product_id)
   VALUES (1, 'Will these jeans shrink?', 'Thu Jul 09 2020 11:52:56', 5, 0, 'cindyFromUtah', 1);`);
-  pool.query(`INSERT INTO answers (adata, othercode) VALUES (404);`);
+  pool.query(`INSERT INTO answers (answer_id, ) VALUES (404);`);
 });
-
-// **Commands to create the tables**
-
-// Create Product Table
-/*
-
-CREATE TABLE products (
-  product_id serial PRIMARY KEY
-)
-
-*/
-// Create Question Table
-/*
-
-CREATE TABLE questions (
-  question_id serial PRIMARY KEY,
-  question_body varchar(255),
-  question_date timestamp,
-  question_helpfulness integer,
-  reported integer,
-  asker_name varchar(60),
-  product_id integer REFERENCES products
-)
-
-*/
-// Create Answer Table
-/*
-
-CREATE TABLE answers (
-  answer_id serial PRIMARY KEY,
-  body varchar(255),
-  date timestamp,
-  answerer_name varchar(60),
-  helpfulnes integer,
-  photos text[],
-  question_id integer REFERENCES questions
-)
-
-*/
 
 module.exports = {
   getProducts,
