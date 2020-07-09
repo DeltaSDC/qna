@@ -19,7 +19,6 @@ app.get('/qa/', db.getProducts);
 // Get one QA
 app.get('/qa/:product_id', db.getProduct);
 
-
 // app.post('/qa/:product_id', function(req, res, next) {
 
 // });
