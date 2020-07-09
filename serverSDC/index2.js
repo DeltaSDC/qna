@@ -19,9 +19,8 @@ app.get('/qa/', db.getProducts);
 // Get one QA
 app.get('/qa/:product_id', db.getProduct);
 
-// app.post('/qa/:product_id', function(req, res) {
-//   res.send('POST req to root')
-// })
+// Create a product (eventually, create 10 million)
+app.post('/qa/:product_id', db.createProduct);
 
 // app.put('/qa/:product_id', function(req, res) {
 //   res.send('PUT req to root')

@@ -30,7 +30,7 @@ CREATE TABLE answers (
   body varchar(255),
   date timestamp,
   answerer_name varchar(60),
-  helpfulnes integer,
+  helpfulness integer,
   photos text[],
   question_id integer REFERENCES questions
 )
