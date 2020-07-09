@@ -1,15 +1,7 @@
-// **Commands to create the tables**
+# Commands to create the tables**
 
-// Create Product Table
+## Create Question Table
 
-
-CREATE TABLE products (
-  product_id serial PRIMARY KEY
-)
-
-*/
-// Create Question Table
-/*
 
 CREATE TABLE questions (
   question_id serial PRIMARY KEY,
@@ -18,12 +10,12 @@ CREATE TABLE questions (
   question_helpfulness integer,
   reported integer,
   asker_name varchar(60),
-  product_id integer REFERENCES products
-)
+  product_id integer
+);
 
-*/
-// Create Answer Table
-/*
+
+## Create Answer Table
+
 
 CREATE TABLE answers (
   answer_id serial PRIMARY KEY,
@@ -33,4 +25,4 @@ CREATE TABLE answers (
   helpfulness integer,
   photos text[],
   question_id integer REFERENCES questions
-)
+);
