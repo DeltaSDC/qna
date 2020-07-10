@@ -1,11 +1,12 @@
-# Commands to create the tables**
+DROP DATABASE IF EXISTS productqas;
 
-## Create Question Table
+CREATE DATABASE productqas;
 
+\c productqas;
 
-CREATE TABLE questions (
+CREATE TABLE IF NOT EXISTS questions (
   question_id serial PRIMARY KEY,
-  question_body varchar(255),
+  question_body varchar(150),
   question_date timestamp,
   question_helpfulness integer,
   reported integer,
@@ -14,12 +15,10 @@ CREATE TABLE questions (
 );
 
 
-## Create Answer Table
 
-
-CREATE TABLE answers (
+CREATE TABLE IF NOT EXISTS answers (
   answer_id serial PRIMARY KEY,
-  body varchar(255),
+  body varchar(60),
   date timestamp,
   answerer_name varchar(60),
   helpfulness integer,
