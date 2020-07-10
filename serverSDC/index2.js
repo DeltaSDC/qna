@@ -30,38 +30,3 @@ app.get('/qa/:product_id', db.getProduct);
 // app.delete('/qa/:product_id', function(req, res) {
 //   res.send('DELETE req to root')
 // })
-
-// Shape of Data:
-/*
-{
-  "product_id": STRING(num)
-  "results": [
-    {
-      "question_id": INT,
-      "question_body": STRING,
-      "question_date": STRING(timestamp),
-      "asker_name": STRING,
-      "question_helpfulness": INT,
-      "reported": INT,
-      "answers": {
-        STRING(num): {
-          "id": INT,
-          "body": STRING,
-          "date": STRING(timestamp),
-          "answerer_name": STRING,
-          "photos": [
-            "URL",
-            "URL"
-          ]
-        },
-        STRING(num): {
-          "id": INT,
-          etc etc etc...
-        }
-      }
-    }
-  ]
-}
-
-** NOTE: Photos can be a empty array, answers can be empty object
-*/
