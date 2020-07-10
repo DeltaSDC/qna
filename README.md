@@ -18,3 +18,7 @@ localhost:3003/qa/:product_id
 
 localhost:3003/qa/:product_id
 
+# Generate 10M Records
+From root in the terminal:
+`bash serverSDC/seed.sh 10000000`
+
