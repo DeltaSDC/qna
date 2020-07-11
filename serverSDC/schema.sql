@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS productqas;
+-- DROP DATABASE IF EXISTS productqas;
 
-CREATE DATABASE productqas;
+-- CREATE DATABASE productqas;
 
 \c productqas;
 
@@ -18,10 +18,15 @@ CREATE TABLE IF NOT EXISTS questions (
 
 CREATE TABLE IF NOT EXISTS answers (
   answer_id serial PRIMARY KEY,
-  body varchar(60),
-  date timestamp,
-  answerer_name varchar(60),
+  body varchar(150),
+  answer_date timestamp,
+  answerer_name varchar(30),
   helpfulness integer,
-  photos text[],
   question_id integer REFERENCES questions
 );
+
+CREATE TABLE IF NOT EXISTS photos (
+  photo_id serial PRIMARY KEY,
+  url varchar(150),
+  answer_id integer REFERENCES answers
+)
