@@ -56,10 +56,63 @@ class App extends Component {
     this.quesSelectForm = this.quesSelectForm.bind(this)
 
   }
+  // productFetcher(){
+  //   fetch('http://52.26.193.201:3000/qa/5?count=1000')
+  //   .then(response=> response.json())
+  //   .then(data => this.setState({questions:data}))
+  // }
+
   productFetcher(){
-    fetch('http://52.26.193.201:3000/qa/5?count=1000')
-    .then(response=> response.json())
-    .then(data => this.setState({questions:data}))
+    fetch('http://localhost:4003/qa/questions/8648883')
+    .then(response => response.json())
+    .then(data => this.setState({
+      questions: {
+        product_id: data[0].product_id,
+        results: [
+          {
+          question_id: data[0].question_id,
+          question_body: data[0].question_body,
+          question_date: data[0].question_date,
+          asker_name: data[0].asker_name,
+          question_helpfulness: data[0].question_helpfulness,
+          reported: data[0].reported,
+          answers: {
+          1: {
+          id: 1,
+          body: "Supposedly suede, but I think its synthetic",
+          date: "2018-01-17T00:00:00.000Z",
+          answerer_name: "Seller",
+          helpfulness: 2,
+          photos: []
+          }}}
+          ]
+      }
+      // [questions.results]: [],
+    }))
+    .then(data => this.setState({
+      questions: {
+        product_id: this.state.product_id,
+        results: [
+          {
+          question_id: this.state.questions.results[0].question_id,
+          question_body: this.state.questions.results[0].question_body,
+          question_date: this.state.questions.results[0].question_date,
+          asker_name: this.state.questions.reuslts[0].asker_name,
+          question_helpfulness: this.state.questions.results[0].question_helpfulness,
+          reported: this.state.questions.results[0].reported,
+          answers: {
+          1: {
+          id: 1,
+          body: "TEST I HOPE IT WORKS",
+          date: "2018-01-17T00:00:00.000Z",
+          answerer_name: "Seller",
+          helpfulness: 2,
+          photos: []
+          }}}
+          ]
+      }
+      // [questions.results]: [],
+    }))
   }
 
   componentDidMount(){

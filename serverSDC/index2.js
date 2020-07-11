@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const db = require('./queries');
 const app = express();
-const port = 3003;
+const port = 4003;
 app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.static('public'));    <== commented out for now for testing
