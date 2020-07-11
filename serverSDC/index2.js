@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -16,8 +17,16 @@ app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 // Get all QAs
 app.get('/qa/', db.getProducts);
 
-// Get one QA
-app.get('/qa/:product_id', db.getProduct);
+// Get one Q
+app.get('/qa/questions/:id', db.getQuestion);
+
+// Get one A
+app.get('/qa/answers/:id', db.getAnswer);
+
+// Get one photo
+// app.get('/qa/photos/:id', db.getPhoto);
+
+
 
 // app.post('/qa/:product_id', function(req, res, next) {
 
