@@ -9,7 +9,7 @@ const pool = new Pool({
 
 // Get all products
 const getProducts = (req, res) => {
-  pool.query('SELECT * FROM products ORDER BY product_id ASC', (error, results) => {
+  pool.query('SELECT * FROM questions', (error, results) => {
     if (error) {
       throw error;
     }
@@ -19,7 +19,7 @@ const getProducts = (req, res) => {
 
 // Get a single product
 const getProduct = (req, res) => {
-  pool.query(`SELECT * FROM products WHERE product_id = ${req.params.product_id}`, (error, results) => {
+  pool.query(`SELECT * FROM questions WHERE product_id = ${req.params.product_id}`, (error, results) => {
     if (error) {
       throw error;
     }
