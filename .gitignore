@@ -111,4 +111,5 @@ dist
 
 #New Relic
 *.yml
+newrelic.js
 
