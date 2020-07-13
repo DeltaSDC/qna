@@ -1,3 +1,4 @@
+const nr = require('newrelic');
 const compression = require('compression');
 const express = require('express');
 const cors = require('cors');
