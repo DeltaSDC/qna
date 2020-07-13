@@ -8,18 +8,18 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DATABASE="productqas"
 USER="ethan_parent"
 
-OUTPUT="posts.csv"
-FILEPATH="$DIR/$OUTPUT"
+POUTPUT="Pposts.csv"
+PFILEPATH="$DIR/$POUTPUT"
 
 # Defaults record gen to 10M
-LINES=${1:-10000000}
+LINES=${1:-1000}
 
 ## Import the DB
 SCHEMA="$DIR/schema.sql"
 psql -U $USER < $SCHEMA
 
 ## RUN the generator script
-node serverSDC/dataGen.js --output=$FILEPATH --lines=$LINES
+node serverSDC/genPhotos.js --output=$PFILEPATH --lines=$LINES
 
-## Import posts.csv file to seed Database
-psql -U $USER -d $DATABASE -c "COPY questions FROM '$FILEPATH' CSV HEADER;"
+## Import posts.csv file to seed Database (questions table)
+psql -U $USER -d $DATABASE -c "COPY photos FROM '$PFILEPATH' CSV HEADER;"
