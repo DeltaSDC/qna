@@ -49,6 +49,7 @@ class App extends Component {
     this.handleClick2 = this.handleClick2.bind(this);
     this.helpSubmit = this.helpSubmit.bind(this);
     this.productFetcher = this.productFetcher.bind(this);
+    this.answerFetcher = this.answerFetcher.bind(this);
     this.qaSubmit = this.qaSubmit.bind(this);
     this.qaReport = this.qaReport.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -79,7 +80,7 @@ class App extends Component {
           answers: {
           1: {
           id: 1,
-          body: "Supposedly suede, but I think its synthetic",
+          body: "FIRST SET STATE, but I think its synthetic",
           date: "2018-01-17T00:00:00.000Z",
           answerer_name: "Seller",
           helpfulness: 2,
@@ -89,29 +90,33 @@ class App extends Component {
       }
       // [questions.results]: [],
     }))
+    .then(data => this.answerFetcher())
+  }
+
+  answerFetcher() {
+    fetch('http://localhost:4003/qa/answers/8648883')
     .then(data => this.setState({
       questions: {
         product_id: this.state.product_id,
         results: [
           {
-          question_id: this.state.questions.results[0].question_id,
+          question_id: 777,
           question_body: this.state.questions.results[0].question_body,
           question_date: this.state.questions.results[0].question_date,
-          asker_name: this.state.questions.reuslts[0].asker_name,
+          asker_name: this.state.questions.results[0].asker_name,
           question_helpfulness: this.state.questions.results[0].question_helpfulness,
           reported: this.state.questions.results[0].reported,
           answers: {
           1: {
-          id: 1,
-          body: "TEST I HOPE IT WORKS",
-          date: "2018-01-17T00:00:00.000Z",
-          answerer_name: "Seller",
-          helpfulness: 2,
+          id: "y u no work",
+          body: "What in the world!",
+          date: data[0].answer_date,
+          answerer_name: data[0].answerer_name,
+          helpfulness: data[0].helpfulness,
           photos: []
           }}}
           ]
       }
-      // [questions.results]: [],
     }))
   }
 
