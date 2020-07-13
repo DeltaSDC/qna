@@ -21,10 +21,10 @@ app.get('/qa/', db.getProducts);
 app.get('/qa/questions/:id', db.getQuestion);
 
 // Get one A
-app.get('/qa/answers/:id', db.getAnswer);
+app.get('/qa/answers/:id', db.getAnswers);
 
 // Get one photo
-// app.get('/qa/photos/:id', db.getPhoto);
+app.get('/qa/photos/:id', db.getPhotos);
 
 
 

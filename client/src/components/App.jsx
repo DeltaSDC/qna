@@ -64,33 +64,77 @@ class App extends Component {
   // }
 
   productFetcher(){
-    fetch('http://localhost:4003/qa/questions/8648883')
-    .then(response => response.json())
-    .then(data => this.setState({
-      questions: {
-        product_id: data[0].product_id,
-        results: [
-          {
-          question_id: data[0].question_id,
-          question_body: data[0].question_body,
-          question_date: data[0].question_date,
-          asker_name: data[0].asker_name,
-          question_helpfulness: data[0].question_helpfulness,
-          reported: data[0].reported,
-          answers: {
-          1: {
+    let questions = {
+      product_id: "5",
+      results: [],
+    }
+    let QArr = [];
+    Promise.all([
+      fetch('http://localhost:4003/qa/questions/8648883').then(Qdata => Qdata.json()),
+      fetch('http://localhost:4003/qa/answers/8648883').then(Adata => Adata.json()),
+      fetch('http://localhost:4003/qa/photos/896').then(Pdata => Pdata.json()),
+    ])
+    .then(([Qdata, Adata, Pdata]) => Qdata.forEach((question, i) => questions.results.push(
+      {
+        question_id: Qdata[i].question_id,
+        question_body: Qdata[i].question_body,
+        question_date: Qdata[i].question_date,
+        asker_name: Qdata[i].asker_name,
+        question_helpfulness: Qdata[i].question_helpfulness,
+        reported: Qdata[i].reported,
+        answers: {
+        1: {
           id: 1,
-          body: "FIRST SET STATE, but I think its synthetic",
-          date: "2018-01-17T00:00:00.000Z",
-          answerer_name: "Seller",
-          helpfulness: 2,
-          photos: []
-          }}}
-          ]
-      }
-      // [questions.results]: [],
+          body: Adata[i].body,
+          date: Adata[i].answer_date,
+          answerer_name: Adata[i].answerer_name,
+          helpfulness: Adata[i].helpfulness,
+          photos: [Pdata[0].url, Pdata[0].url],
+        }},
+    })))
+    .then(data => this.setState({
+      questions,
     }))
-    .then(data => this.answerFetcher())
+    // .then(([Qdata, Adata, Pdata]) => this.setState({
+    //   questions: {
+    //     product_id: Qdata[0].product_id,
+    //     results: [
+    //       {
+    //         question_id: Qdata[0].question_id,
+    //         question_body: Qdata[0].question_body,
+    //         question_date: Qdata[0].question_date,
+    //         asker_name: Qdata[0].asker_name,
+    //         question_helpfulness: Qdata[0].question_helpfulness,
+    //         reported: Qdata[0].reported,
+    //         answers: {
+    //       1: {
+    //         id: 1,
+    //         body: Adata[0].body,
+    //         date: Adata[0].answer_date,
+    //         answerer_name: Adata[0].answerer_name,
+    //         helpfulness: Adata[0].helpfulness,
+    //         photos: [Pdata[0].url, Pdata[0].url],
+    //         }}},
+    //       {
+    //         question_id: Qdata[1].question_id,
+    //         question_body: Qdata[1].question_body,
+    //         question_date: Qdata[1].question_date,
+    //         asker_name: Qdata[1].asker_name,
+    //         question_helpfulness: Qdata[1].question_helpfulness,
+    //         reported: Qdata[1].reported,
+    //         answers: {
+    //         1: {
+    //         id: 1,
+    //         body: Adata[0].body,
+    //         date: Adata[0].answer_date,
+    //         answerer_name: Adata[0].answerer_name,
+    //         helpfulness: Adata[0].helpfulness,
+    //         photos: [Pdata[0].url, Pdata[0].url],
+    //         }}}
+    //       ]
+    //   }
+    // }))
+    // .then(data => this.answerFetcher())
   }
 
   answerFetcher() {

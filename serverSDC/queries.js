@@ -19,7 +19,15 @@ const getProducts = (req, res) => {
 
 // Get a single product
 const getQuestion = (req, res) => {
-  pool.query(`SELECT * FROM questions WHERE product_id = ${req.params.id}`, (error, results) => {
+  let rangeMin = Number(req.params.id);
+  let rangeMax = Number(req.params.id) + 3;
+  rangeMin = rangeMin.toString();
+  rangeMax = rangeMax.toString();
+  if (Number(rangeMin) + 3 >= 10000000) {
+    rangeMin = 1
+    rangeMax = 4;
+  }
+  pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
     if (error) {
       throw error;
     }
@@ -36,8 +44,16 @@ const getQuestion = (req, res) => {
 //   });
 // };
 
-const getAnswer = (req, res) => {
-  pool.query(`SELECT * FROM answers WHERE question_id = ${req.params.id}`, (error, results) => {
+const getAnswers = (req, res) => {
+  let rangeMin = Number(req.params.id);
+  let rangeMax = Number(req.params.id) + 3;
+  rangeMin = rangeMin.toString();
+  rangeMax = rangeMax.toString();
+  if (Number(rangeMin) + 3 >= 10000000) {
+    rangeMin = 1
+    rangeMax = 4;
+  }
+  pool.query(`SELECT * FROM answers WHERE question_id >= ${rangeMin} AND question_id <= ${rangeMax}`, (error, results) => {
     if (error) {
       throw error;
     }
@@ -45,8 +61,20 @@ const getAnswer = (req, res) => {
   })
 };
 
+const getPhotos = (req, res) => {
+  pool.query(`SELECT * FROM photos WHERE photo_id = ${req.params.id}`, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  })
+};
+
+
+
 module.exports = {
   getProducts,
   getQuestion,
-  getAnswer,
+  getAnswers,
+  getPhotos,
 };

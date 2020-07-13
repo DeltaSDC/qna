@@ -13,7 +13,7 @@ let image;
 const createPRecord = () => {
   aId += 1;
   pId += 1;
-  image = faker.image.image();
+  image = 'https://picsum.photos/200/300';
   return `${pId},${image},${aId}\n`
 };
 
