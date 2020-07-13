@@ -109,3 +109,6 @@ dist
 #Clinic
 /serverSDC/.clinic
 
+#New Relic
+*.yml
+
