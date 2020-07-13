@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "argv": "0.0.2",
+    "artillery": "^1.6.1",
+    "autocannon": "^5.0.1",
     "babel-jest": "^26.0.1",
     "babel-preset-airbnb": "^5.0.0",
     "bootstrap": "^4.5.0",
@@ -24,6 +26,7 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "moment": "^2.27.0",
+    "newrelic": "^6.11.0",
     "nodemon": "^2.0.4",
     "pg": "^8.2.2",
     "pg-hstore": "^2.3.3",

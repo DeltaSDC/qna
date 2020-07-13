@@ -1,0 +1,14 @@
+config:
+  target: 'http://localhost:3003'
+  phases:
+    - duration: 30
+      arrivalRate: 800
+  http:
+    pool: 5
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - get:
+        url: "/"
