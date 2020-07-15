@@ -8,6 +8,7 @@ const db = require('./queries');
 const app = express();
 const port = 4003;
 app.use(cors());
+app.use(compression());
 app.use(bodyParser.json());
 // app.use(express.static('public'));    <== commented out for now for testing
 
