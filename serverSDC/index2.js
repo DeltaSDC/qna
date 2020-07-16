@@ -1,5 +1,5 @@
 const nr = require('newrelic');
-const spdy = require('spdy');
+// const spdy = require('spdy');
 const compression = require('compression');
 const express = require('express');
 const path = require('path');
@@ -45,18 +45,18 @@ app.get('/qa/photos/:id', db.getPhotos);
 //   res.send('DELETE req to root')
 // })
 
-const options = {
-  key: fs.readFileSync(__dirname + '/http2-express/server.key'),
-  cert:  fs.readFileSync(__dirname + '/http2-express/server.crt')
-}
+// const options = {
+//   key: fs.readFileSync(__dirname + '/http2-express/server.key'),
+//   cert:  fs.readFileSync(__dirname + '/http2-express/server.crt')
+// }
 
-spdy
-  .createServer(options, app)
-  .listen(port, (error) => {
-    if (error) {
-      console.error(error)
-      return process.exit(1)
-    } else {
-      console.log('Listening on port: ' + port + '.')
-    }
-  })
+// spdy
+//   .createServer(options, app)
+//   .listen(port, (error) => {
+//     if (error) {
+//       console.error(error)
+//       return process.exit(1)
+//     } else {
+//       console.log('Listening on port: ' + port + '.')
+//     }
+//   })
