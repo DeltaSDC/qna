@@ -15,7 +15,7 @@ app.use(compression());
 app.use(bodyParser.json());
 // app.use(express.static('public'));    <== commented out for now for testing
 
-// app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
 // Future Update: Move routes to their own file, e.g. routes.js
 
