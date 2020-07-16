@@ -113,3 +113,7 @@ dist
 *.yml
 newrelic.js
 
+#http2-express
+*.crt
+*.csr
+server.key
