@@ -32,14 +32,6 @@ app.get('/qa/answers/:id', db.getAnswers);
 // Get one photo
 app.get('/qa/photos/:id', db.getPhotos);
 
-app.get('/loaderio-3e95605f351817d9007fd392da98cbb7/', function (req, res) {
-  const text = key.loaderKey;
-  res.setHeader('Content-type', "application/octet-stream");
-  res.setHeader('Content-disposition', 'attachment; filename=file.txt');
-  res.send(text);
-  // res.send(key.loaderKey);
-})
-
 app.get(key.loaderKey, function(req, res) {
   res.sendFile('loaderKeyText.txt', {root: __dirname })
 });
