@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const key = require('../loaderKey.js');
+const key = require('../loaderKey');
 
 const db = require('./queries');
 const app = express();
@@ -33,8 +33,18 @@ app.get('/qa/answers/:id', db.getAnswers);
 app.get('/qa/photos/:id', db.getPhotos);
 
 app.get('/loaderio-3e95605f351817d9007fd392da98cbb7/', function (req, res) {
+<<<<<<< HEAD
   res.send(key.loaderKey);
+=======
+  const text = key.loaderKey;
+  res.setHeader('Content-type', "application/octet-stream");
+  res.setHeader('Content-disposition', 'attachment; filename=file.txt');
+  res.send(text);
+  // res.send(key.loaderKey);
+>>>>>>> 583e963f882dbf30088f59a8ed5b42459397c6de
 })
+
+
 
 
 
