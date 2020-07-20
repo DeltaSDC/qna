@@ -32,7 +32,7 @@ app.get('/qa/answers/:id', db.getAnswers);
 // Get one photo
 app.get('/qa/photos/:id', db.getPhotos);
 
-app.get('/loaderio-41d88e0a7523fc600c3092a34616528b/', function (req, res) {
+app.get('/loaderio-3e95605f351817d9007fd392da98cbb7/', function (req, res) {
   res.send(key.loaderKey);
 })
 
