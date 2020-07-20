@@ -40,6 +40,9 @@ app.get('/loaderio-3e95605f351817d9007fd392da98cbb7/', function (req, res) {
   // res.send(key.loaderKey);
 })
 
+app.get(key.loaderKey, function(req, res) {
+  res.sendFile('loaderKeyText.txt', {root: __dirname })
+});
 
 
 
