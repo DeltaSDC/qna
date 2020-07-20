@@ -14,7 +14,7 @@ const getProducts = (req, res) => {
       throw error;
     }
   });
-  res.status(200).json({})
+  res.status(200).json({});
 };
 
 // Get a single product
@@ -69,7 +69,6 @@ const getPhotos = (req, res) => {
     res.status(200).json(results.rows);
   })
 };
-
 
 
 module.exports = {

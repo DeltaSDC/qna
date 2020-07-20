@@ -117,3 +117,6 @@ newrelic.js
 *.crt
 *.csr
 server.key
+
+#loader.io
+loaderKey.js
