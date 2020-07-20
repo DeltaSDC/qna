@@ -32,7 +32,7 @@ app.get('/qa/answers/:id', db.getAnswers);
 // Get one photo
 app.get('/qa/photos/:id', db.getPhotos);
 
-app.get(key.loaderKey, function(req, res) {
+app.get(`/${key.loaderKey}/`, function(req, res) {
   res.sendFile(`loaderio-3e95605f351817d9007fd392da98cbb7.txt`, {root: __dirname })
 });
 
