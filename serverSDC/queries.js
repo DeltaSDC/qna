@@ -1,9 +1,9 @@
 const { Pool } = require('pg');
 const pool = new Pool({
-  user: 'ethan_parent',
-  host: 'localhost',
+  user: 'postgres',
+  host: 'ec2-13-52-247-137.us-west-1.compute.amazonaws.com',
   database: 'productqas',
-  password: '',
+  password: 'ohmyganesha',
   port: 5432,
 });
 
@@ -14,7 +14,7 @@ const getProducts = (req, res) => {
       throw error;
     }
   });
-  res.status(200).json({})
+  res.status(200).json({});
 };
 
 // Get a single product
@@ -69,7 +69,6 @@ const getPhotos = (req, res) => {
     res.status(200).json(results.rows);
   })
 };
-
 
 
 module.exports = {

@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const key = require('../loaderKey');
 
 const db = require('./queries');
 const app = express();
@@ -31,7 +32,9 @@ app.get('/qa/answers/:id', db.getAnswers);
 // Get one photo
 app.get('/qa/photos/:id', db.getPhotos);
 
-
+app.get(`/${key.loaderKey}/`, function(req, res) {
+  res.sendFile(__dirname + '/' + `${key.loaderKey}.txt`)
+});
 
 // app.post('/qa/:product_id', function(req, res, next) {
 
