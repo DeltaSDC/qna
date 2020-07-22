@@ -18,12 +18,27 @@ app.use(bodyParser.json());
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
-// Future Update: Move routes to their own file, e.g. routes.js
+// Redis stuff:
+const port_redis = process.env.PORT || 6379;
+const redis_client = redis.createClient(port_redis);
+
+
+
+
 
 // Get all QAs
 app.get('/qa/', db.getProducts);
 
 // Get one Q
+app.get('/qa/questions/:id', async (req, res) => {
+  try {
+    db.getProducts()
+  }
+  catch(error) {
+    console.log(error);
+    return res.status(500).json(error);
+  }
+})
 app.get('/qa/questions/:id', db.getQuestion);
 
 // Get one A
