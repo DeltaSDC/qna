@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const redis = require('redis');
 const key = require('../loaderKey');
 
 const db = require('./queries');
