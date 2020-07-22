@@ -20,11 +20,8 @@ app.use(bodyParser.json());
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
 // Redis stuff:
-const port_redis = process.env.PORT || 6379;
-const redis_client = redis.createClient(port_redis);
-
-
-
+// const port_redis = process.env.PORT || 6379;
+// const redis_client = redis.createClient(port_redis);
 
 
 // Get all QAs
