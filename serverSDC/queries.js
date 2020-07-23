@@ -39,7 +39,7 @@ const getQuestion = (req, res) => {
     if (error) {
       throw error;
     }
-    ethanCache[req.params.id] = req.params.id.json();
+    ethanCache[req.params.id] = JSON.parse(results.rows);
     res.status(200).json(results.rows);
   })
 };
