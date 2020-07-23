@@ -40,9 +40,7 @@ app.get(`/${key.loaderKey}/`, function(req, res) {
 
 // Get on question using redis:
 // get one question with redis
-app.get('qa/questions/:id', function(req, res) {
-  db.getQuestionRedis();
-});
+app.get('qa/questions/:id', db.getQuestionRedis);
 
 
 
