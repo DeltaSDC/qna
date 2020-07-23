@@ -1,5 +1,7 @@
 const { Pool } = require('pg');
 const pass = require('./dbpassword');
+const cache = require('./cache');
+
 const pool = new Pool({
   user: 'postgres',
   host: 'ec2-54-183-223-115.us-west-1.compute.amazonaws.com',
@@ -18,6 +20,7 @@ const getProducts = (req, res) => {
   res.status(200).json({});
 };
 
+let ethanCache = {};
 // Get a single product
 const getQuestion = (req, res) => {
   let rangeMin = Number(req.params.id);
@@ -28,10 +31,15 @@ const getQuestion = (req, res) => {
     rangeMin = 1
     rangeMax = 4;
   }
+  if (ethanCache[req.params.id]) {
+    return ethanCache[req.params.id]
+  }
+
   pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
     if (error) {
       throw error;
     }
+    ethanCache[req.params.id] = req.params.id;
     res.status(200).json(results.rows);
   })
 };
