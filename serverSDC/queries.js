@@ -50,6 +50,23 @@ const getQuestion = (req, res) => {
 }
 
 const getQuestionRedis = (req, res) => {
+  checkCache = (req, res, next) => {
+    const { id } = req.params;
+
+    redis_client.get(id, (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+      }
+      //if no match found
+      if (data != null) {
+        res.send(data);
+      } else {
+        //proceed to next middleware function
+        next();
+      }
+    });
+  };
   const { id } = req.params;
   let rangeMin = Number(req.params.id);
   let rangeMax = Number(req.params.id) + 3;
