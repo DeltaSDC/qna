@@ -50,16 +50,15 @@ const getQuestion = (req, res) => {
 }
 
 const getQuestionRedis = (req, res) => {
-    const { id } = req.params;
-    const questionInfo;
-    pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
-      if (error) {
-        throw error;
-      }
-      questionInfo = results;
-      redis_client.setex(id, 3600, JSON.stringify(questionInfo))
-      res.status(200).json(results.rows);
-    })
+  const { id } = req.params;
+  pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    const questionInfo = results;
+    redis_client.setex(id, 3600, JSON.stringify(questionInfo))
+    res.status(200).json(results.rows);
+  })
 }
 
 
