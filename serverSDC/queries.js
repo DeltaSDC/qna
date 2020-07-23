@@ -34,15 +34,17 @@ const getQuestion = (req, res) => {
   if (ethanCache[req.params.id]) {
     let data = ethanCache[req.params.id]
     res.status(200).json(data)
+  } else {
+    pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
+      if (error) {
+        throw error;
+      }
+      ethanCache[req.params.id] = results.rows;
+      res.status(200).json(results.rows);
+    })
   }
 
-  pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
-    if (error) {
-      throw error;
-    }
-    ethanCache[req.params.id] = results.rows;
-    res.status(200).json(results.rows);
-  })
+
 };
 
 // const getQuestions = (req, res) => {
