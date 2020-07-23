@@ -22,14 +22,11 @@ app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 // const port_redis = process.env.PORT || 6379;
 // const redis_client = redis.createClient(port_redis);
 
-
-
-
 // Get all QAs
 app.get('/qa/', db.getProducts);
 
 // Get one Q
-app.get('/qa/questions/:id', db.getQuestion);
+// app.get('/qa/questions/:id', db.getQuestion);
 
 // Get one A
 app.get('/qa/answers/:id', db.getAnswers);
@@ -40,6 +37,15 @@ app.get('/qa/photos/:id', db.getPhotos);
 app.get(`/${key.loaderKey}/`, function(req, res) {
   res.sendFile(__dirname + '/' + `${key.loaderKey}.txt`)
 });
+
+// Get on question using redis:
+// get one question with redis
+app.get('qa/questions/:id', function(req, res) {
+  db.getQuestionRedis();
+});
+
+
+
 
 // app.post('/qa/:product_id', function(req, res, next) {
 
