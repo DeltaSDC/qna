@@ -33,7 +33,7 @@ const getQuestion = (req, res) => {
   }
   if (ethanCache[req.params.id]) {
     let data = ethanCache[req.params.id]
-    res.end(data);
+    res.status(200).json(results.rows)
   }
 
   pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
