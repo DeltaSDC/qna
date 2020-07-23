@@ -51,6 +51,14 @@ const getQuestion = (req, res) => {
 
 const getQuestionRedis = (req, res) => {
   const { id } = req.params;
+  let rangeMin = Number(req.params.id);
+  let rangeMax = Number(req.params.id) + 3;
+  rangeMin = rangeMin.toString();
+  rangeMax = rangeMax.toString();
+  if (Number(rangeMin) + 3 >= 10000000) {
+    rangeMin = 1
+    rangeMax = 4;
+  }
   pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
     if (error) {
       throw error;
