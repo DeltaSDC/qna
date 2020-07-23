@@ -31,22 +31,27 @@ const getQuestion = (req, res) => {
     rangeMin = 1
     rangeMax = 4;
   }
-  if (ethanCache[req.params.id]) {
-    let data = ethanCache[req.params.id]
-    res.status(200).json(data)
-  } else {
-    pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
-      if (error) {
-        throw error;
-      }
-      ethanCache[req.params.id] = results.rows;
-      res.status(200).json(results.rows);
-    })
-  }
+  // if (ethanCache[req.params.id]) {
+  //   let data = ethanCache[req.params.id]
+  //   res.status(200).json(data)
+  // } else {
+  //   pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
+  //     if (error) {
+  //       throw error;
+  //     }
+  //     ethanCache[req.params.id] = results.rows;
+  //     res.status(200).json(results.rows);
+  //   })
+  // }
 
-
-};
-
+  pool.query(`SELECT * FROM questions WHERE product_id >= ${rangeMin} AND product_id <= ${rangeMax}`, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    // ethanCache[req.params.id] = results.rows;
+    res.status(200).json(results.rows);
+  })
+}
 // const getQuestions = (req, res) => {
 //   pool.query(`SELECT * FROM questions WHERE product_id = ${req.params.product_id}`, (error, results) => {
 //     if (error) {
