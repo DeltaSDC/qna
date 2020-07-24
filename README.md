@@ -18,7 +18,7 @@ From root in the terminal:
 
 # Optimiziation Photos:
 
-![Image of New Relic testing](https://drive.google.com/file/d/1MP3fg7NNQiPKywiGc1TN9FP0519LzRSZ/view?usp=sharing)
+![Image of New Relic testing](https://drive.google.com/uc?export=view&id=1MP3fg7NNQiPKywiGc1TN9FP0519LzRSZ)
 
 
 
