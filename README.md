@@ -18,7 +18,7 @@ From root in the terminal:
 
 # Optimiziation Photos:
 
-![Image of New Relic testing](https://drive.google.com/uc?export=view&id=1MP3fg7NNQiPKywiGc1TN9FP0519LzRSZ)
+![Image of loader.io testing](https://drive.google.com/uc?export=view&id=1MP3fg7NNQiPKywiGc1TN9FP0519LzRSZ)
 
-
+This is a screenshot from loader.io stress testing showing my RPS on a single DB query at 10k RPS.
 
