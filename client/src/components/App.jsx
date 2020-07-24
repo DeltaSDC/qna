@@ -70,9 +70,9 @@ class App extends Component {
     }
     let QArr = [];
     Promise.all([
-      fetch('http://localhost:4003/qa/questions/8648883').then(Qdata => Qdata.json()),
-      fetch('http://localhost:4003/qa/answers/8648883').then(Adata => Adata.json()),
-      fetch('http://localhost:4003/qa/photos/896').then(Pdata => Pdata.json()),
+      fetch('http://loadbalance-example-1733285937.us-west-1.elb.amazonaws.com:4003/qa/questions/8648883').then(Qdata => Qdata.json()),
+      fetch('http://loadbalance-example-1733285937.us-west-1.elb.amazonaws.com:4003/qa/answers/8648883').then(Adata => Adata.json()),
+      fetch('http://loadbalance-example-1733285937.us-west-1.elb.amazonaws.com:4003/qa/photos/896').then(Pdata => Pdata.json()),
     ])
     .then(([Qdata, Adata, Pdata]) => Qdata.forEach((question, i) => questions.results.push(
       {
